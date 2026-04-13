@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViajesYa - Agencias</title>
+    <link rel="stylesheet" href="../css/agencia.css">
+</head>
+<body>
+    <!-- Encabezado con Mega-Menú (Mismo que el index.html) -->
+    <header class="main-header">
+        <a href="index.html" class="logo" aria-label="Inicio ViajesYa">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-svg"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21.5 4c0 0-2 .5-3.5 2L14.5 9.5 6.3 7.7l-.8.8 6.5 2.8L9 14.5l-3.3-.8-.9.9 2.5 4.5 4.5 2.5.9-.9-.8-3.3 3.2-3.2 2.8 6.5.8-.8z"/></svg>
+            ViajesYa
+        </a>
+        <nav>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Alternar modo oscuro">
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="destinos.html">Destinos</a>
+                    <!-- Mega Menú Desplegable -->
+                    <div class="mega-menu">
+                        <div class="col">
+                            <h3>América</h3>
+                            <a href="#">Argentina</a>
+                            <a href="#">Brasil</a>
+                            <a href="#">México</a>
+                        </div>
+                        <div class="col">
+                            <h3>Europa</h3>
+                            <a href="#">España</a>
+                            <a href="#">Francia</a>
+                            <a href="#">Italia</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="agencia.html">Agencias</a></li>
+                <li><a href="precios.html">Precios</a></li>
+                <li><a href="blogdestino.html">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal: Tarjetas Flip y Estrellas -->
+    <main class="agencies-main">
+        <h1 class="page-title">Nuestras Agencias Asociadas</h1>
+        
+        <div class="agencies-grid">
+            <!-- Agencia 1 -->
+            <article class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80" alt="Mundo Viajes">
+                        <h3>Mundo Viajes</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Mundo Viajes</h3>
+                        <p>Especialistas en recorridos corporativos y viajes por Europa.</p>
+                        <p>Contacto: info@mundoviajes.com</p>
+                        <!-- Sistema de Rating CSS -->
+                        <div class="rating" aria-label="Calificación">
+                            <input type="radio" name="rating1" id="star5-1" aria-hidden="true"><label for="star5-1" tabindex="0">★</label>
+                            <input type="radio" name="rating1" id="star4-1" checked aria-hidden="true"><label for="star4-1" tabindex="0">★</label>
+                            <input type="radio" name="rating1" id="star3-1" aria-hidden="true"><label for="star3-1" tabindex="0">★</label>
+                            <input type="radio" name="rating1" id="star2-1" aria-hidden="true"><label for="star2-1" tabindex="0">★</label>
+                            <input type="radio" name="rating1" id="star1-1" aria-hidden="true"><label for="star1-1" tabindex="0">★</label>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Agencia 2 -->
+            <article class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80" alt="Aventura Extrema">
+                        <h3>Aventura Extrema</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Aventura Extrema</h3>
+                        <p>Para los amantes de la adrenalina y la naturaleza salvaje.</p>
+                        <p>Contacto: hola@aventura.com</p>
+                        <div class="rating" aria-label="Calificación">
+                            <input type="radio" name="rating2" id="star5-2" checked aria-hidden="true"><label for="star5-2" tabindex="0">★</label>
+                            <input type="radio" name="rating2" id="star4-2" aria-hidden="true"><label for="star4-2" tabindex="0">★</label>
+                            <input type="radio" name="rating2" id="star3-2" aria-hidden="true"><label for="star3-2" tabindex="0">★</label>
+                            <input type="radio" name="rating2" id="star2-2" aria-hidden="true"><label for="star2-2" tabindex="0">★</label>
+                            <input type="radio" name="rating2" id="star1-2" aria-hidden="true"><label for="star1-2" tabindex="0">★</label>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Pie de Página (Mismo que el index.html) -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="newsletter">
+                <h3>Suscríbete a nuestro Newsletter</h3>
+                <form>
+                    <input type="email" placeholder="Tu correo electrónico" required aria-label="Correo electrónico">
+                    <button type="submit" aria-label="Suscribirse">Suscribirse</button>
+                </form>
+            </div>
+            <div class="social-links">
+                <h3>Síguenos</h3>
+                <a href="#" aria-label="Facebook">Facebook</a>
+                <a href="#" aria-label="Instagram">Instagram</a>
+                <a href="#" aria-label="Twitter">Twitter</a>
+            </div>
+        </div>
+        <!-- Mapa interactivo embebido -->
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.155822369438!2d-65.3121!3d-24.1858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDExJzA4LjkiUyA2NcKwMTgnNDMuNiJX!5e0!3m2!1ses!2sar!4v1616616161616!5m2!1ses!2sar" width="100%" height="250" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </footer>
+
+    <!-- Botón flotante de Contacto -->
+    <a href="contacto.html" class="floating-contact-btn" title="Contáctanos">💬</a>
+
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        if(localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        toggleBtn?.addEventListener('click', () => {
+            if (document.documentElement.getAttribute('data-theme') === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>

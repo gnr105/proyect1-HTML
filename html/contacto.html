@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViajesYa - Centro de Contacto</title>
+    <link rel="stylesheet" href="../css/contacto.css">
+</head>
+<body>
+    <!-- Header Específico para Contacto -->
+    <header class="contact-header">
+        <a href="index.html" class="logo" aria-label="Soporte ViajesYa">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-svg"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21.5 4c0 0-2 .5-3.5 2L14.5 9.5 6.3 7.7l-.8.8 6.5 2.8L9 14.5l-3.3-.8-.9.9 2.5 4.5 4.5 2.5.9-.9-.8-3.3 3.2-3.2 2.8 6.5.8-.8z"/></svg>
+            ViajesYa | Soporte
+        </a>
+        <nav>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Alternar modo oscuro">
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+            <a href="index.html" class="back-link" aria-label="Volver al inicio">← Volver al Inicio</a>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="contact-main">
+        <section class="contact-wrapper">
+            <h1>Envíanos un Mensaje</h1>
+            <p class="subtitle">Completa el formulario y te responderemos a la brevedad.</p>
+            
+            <!-- Hack CSS para simular el envío del formulario (spinner y modal) -->
+            <input type="checkbox" id="submit-hack" class="hidden-trigger" aria-hidden="true">
+
+            <form class="contact-form" onsubmit="event.preventDefault();">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <!-- Validado si contiene texto -->
+                    <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required minlength="3">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <!-- Validado automáticamente por ser type="email" -->
+                    <input type="email" id="email" placeholder="ejemplo@correo.com" required>
+                </div>
+                <div class="form-group full-width">
+                    <label for="asunto">Asunto</label>
+                    <input type="text" id="asunto" placeholder="¿En qué podemos ayudarte?" required minlength="5">
+                </div>
+                <div class="form-group full-width">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required minlength="10"></textarea>
+                </div>
+                
+                <!-- El botón está enlazado al checkbox oculto. Solo es clickeable si el formulario es válido -->
+                <label for="submit-hack" class="submit-btn" aria-label="Enviar formulario de contacto" tabindex="0" onkeypress="if(event.key==='Enter') document.getElementById('submit-hack').click()">Enviar Mensaje</label>
+            </form>
+
+            <!-- Efecto de Carga (Spinner) -->
+            <div class="spinner-overlay">
+                <div class="spinner"></div>
+            </div>
+
+            <!-- Modal de Confirmación -->
+            <div class="modal-overlay">
+                <div class="modal-content">
+                    <div class="success-icon">✔</div>
+                    <h2>¡Mensaje Enviado!</h2>
+                    <p>Hemos recibido tu consulta de forma exitosa. Nuestro equipo lo revisará en breve.</p>
+                    <a href="contacto.html" class="close-modal" aria-label="Cerrar modal">Cerrar</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Específico para Contacto -->
+    <footer class="contact-footer">
+        <p>&copy; 2026 ViajesYa. Todos los derechos reservados. Centro de Atención al Cliente.</p>
+    </footer>
+
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        if(localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        toggleBtn?.addEventListener('click', () => {
+            if (document.documentElement.getAttribute('data-theme') === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+:root {
+    --bg-color: #f8fafc;
+    --text-color: #334155;
+    --header-bg: #1e293b;
+    --header-text: #ffffff;
+    --footer-bg: #0f172a;
+    --footer-text: #f8fafc;
+    --primary-color: #0284c7;
+    --accent-color: #f59e0b;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+    --shadow-color: rgba(15, 23, 42, 0.08);
+    --focus-outline: #38bdf8;
+    --btn-hover: #0369a1;
+}
+
+[data-theme="dark"] {
+    --bg-color: #0f172a;
+    --text-color: #f1f5f9;
+    --header-bg: #1e293b;
+    --header-text: #ffffff;
+    --footer-bg: #020617;
+    --footer-text: #cbd5e1;
+    --primary-color: #38bdf8;
+    --accent-color: #fbbf24;
+    --card-bg: #1e293b;
+    --border-color: #334155;
+    --shadow-color: rgba(0,0,0,0.5);
+    --btn-hover: #0ea5e9;
+}
+
+/* ================= Reset Básico ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+*:focus-visible { outline: 3px dashed var(--focus-outline); outline-offset: 4px; }
+
+/* ================= Header y Mega-Menú (Heredado de index) ================= */
+.main-header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    position: relative;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Lucida Calligraphy', serif;
+    text-decoration: none;
+    color: var(--header-text);
+    display: flex; align-items: center; gap: 8px;
+}
+
+.logo-svg { transition: transform 0.5s ease; }
+.logo:hover .logo-svg { transform: rotate(15deg) scale(1.1); animation: fly 2s infinite alternate; }
+@keyframes fly { 0% { transform: translateY(0) rotate(15deg); } 100% { transform: translateY(-5px) rotate(15deg); } }
+
+.main-header nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.theme-toggle { background: transparent; border: none; color: var(--header-text); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0.5rem; border-radius: 50%; transition: background 0.3s, transform 0.2s; }
+.theme-toggle:hover { background: rgba(255,255,255,0.1); transform: scale(1.1); }
+.theme-toggle:active { transform: scale(0.9); }
+.theme-toggle svg { width: 20px; height: 20px; }
+[data-theme="dark"] .sun-icon { display: block; }
+[data-theme="dark"] .moon-icon { display: none; }
+:root:not([data-theme="dark"]) .sun-icon { display: none; }
+:root:not([data-theme="dark"]) .moon-icon { display: block; }
+
+.nav-links { list-style: none; display: flex; gap: 2rem; }
+.nav-links li { position: relative; padding: 10px 0; }
+.nav-links a { color: var(--header-text); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+.nav-links a:hover { color: var(--accent-color); }
+
+.dropdown:hover .mega-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.mega-menu { position: absolute; top: 100%; left: -50px; background-color: var(--card-bg); color: var(--text-color); width: 400px; display: flex; gap: 2rem; padding: 1.5rem; box-shadow: 0 8px 16px var(--shadow-color); border-radius: 0 0 8px 8px; opacity: 0; visibility: hidden; transform: translateY(15px); transition: all 0.3s ease-in-out; }
+.mega-menu .col h3 { border-bottom: 2px solid var(--primary-color); margin-bottom: 10px; padding-bottom: 5px; color: var(--primary-color); }
+.mega-menu .col a { display: block; color: var(--text-color); margin-bottom: 8px; font-weight: normal; }
+.mega-menu .col a:hover { color: var(--primary-color); }
+
+/* ================= Footer (Heredado de index) ================= */
+.main-footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding-top: 3rem;
+    margin-top: 40px;
+}
+.footer-content { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; padding: 0 5% 2rem; }
+.newsletter input { padding: 0.5rem; margin-top: 10px; border: none; border-radius: 3px; background: var(--card-bg); color: var(--text-color); }
+.newsletter button { padding: 0.5rem 1rem; background-color: var(--primary-color); color: white; border: none; border-radius: 3px; cursor: pointer; transition: background 0.3s; }
+.newsletter button:hover { background-color: var(--btn-hover); }
+.social-links { display: flex; flex-direction: column; gap: 5px; }
+.social-links a { color: #aaa; text-decoration: none; transition: color 0.3s; }
+.social-links a:hover { color: white; }
+.map-container iframe { display: block; width: 100%; border: none; }
+
+/* ================= Botón Flotante de Contacto ================= */
+.floating-contact-btn {
+    position: fixed; bottom: 30px; right: 30px;
+    background-color: #27ae60; color: white;
+    width: 60px; height: 60px; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); text-decoration: none;
+    z-index: 2000; transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.floating-contact-btn:hover { transform: scale(1.15) translateY(-5px); background-color: #219653; }
+.floating-contact-btn:active { transform: scale(0.95); }
+
+/* ================= Sección Agencias (Contenido Principal) ================= */
+.agencies-main {
+    padding: 3rem 5%;
+    scroll-snap-align: start;
+}
+
+.page-title {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.agencies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* ================= Tarjetas Efecto Flip (3D) ================= */
+.flip-card {
+    background-color: transparent;
+    width: 320px;
+    height: 400px;
+    perspective: 1000px; /* Crea el espacio 3D */
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+/* Activación de la rotación al pasar el cursor */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Estilos compartidos para el frente y la espalda */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Oculta la cara posterior para Safari */
+    backface-visibility: hidden; /* Oculta la cara posterior cuando está girada */
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Estilo Cara Frontal */
+.flip-card-front {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    transition: clip-path 0.5s ease;
+}
+.flip-card:hover .flip-card-front img { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+
+.flip-card-front h3 {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+/* Estilo Cara Posterior */
+.flip-card-back {
+    background-color: var(--primary-color);
+    color: white;
+    transform: rotateY(180deg); /* Voltea la parte de atrás por defecto */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+.flip-card-back h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+.flip-card-back p {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* ================= Sistema de Estrellas (Rating) Animado ================= */
+/* El contenedor usa flex-direction: row-reverse para simplificar la lógica del selector hermano general (~) */
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+}
+
+.rating input {
+    display: none; /* Ocultar los radio buttons reales */
+}
+
+.rating label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    padding: 0 3px;
+}
+
+/* 
+  La magia CSS:
+  1. Al estar 'checked' un input, él y todos los labels que le siguen (~) se pintan dorados.
+  2. Al pasar el cursor ('hover') por un label, él y todos los que le siguen (~) se pintan dorados.
+*/
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+    color: var(--accent-color);
+}
+
+/* Animación especial solo para la estrella exacta sobre la que tienes el cursor */
+.rating label:hover {
+    transform: scale(1.3);
+}

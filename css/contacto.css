@@ -1,0 +1,208 @@
+:root {
+    --bg-color: #f8fafc;
+    --text-color: #334155;
+    --header-bg: #1e293b;
+    --header-text: #ffffff;
+    --footer-bg: #0f172a;
+    --footer-text: #f8fafc;
+    --primary-color: #0284c7;
+    --accent-color: #f59e0b;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+    --shadow-color: rgba(15, 23, 42, 0.08);
+    --focus-outline: #38bdf8;
+    --btn-hover: #0369a1;
+}
+
+[data-theme="dark"] {
+    --bg-color: #0f172a;
+    --text-color: #f1f5f9;
+    --header-bg: #1e293b;
+    --header-text: #ffffff;
+    --footer-bg: #020617;
+    --footer-text: #cbd5e1;
+    --primary-color: #38bdf8;
+    --accent-color: #fbbf24;
+    --card-bg: #1e293b;
+    --border-color: #334155;
+    --shadow-color: rgba(0,0,0,0.5);
+    --btn-hover: #0ea5e9;
+}
+
+/* ================= Reset Básico ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+*:focus-visible { outline: 3px dashed var(--focus-outline); outline-offset: 4px; }
+
+/* ================= Header Diferenciado ================= */
+.contact-header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.contact-header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.contact-header .back-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.contact-header .back-link:hover {
+    color: #e8f8f5;
+}
+
+.contact-header nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* ================= Layout Principal (Flexbox) ================= */
+.contact-main {
+    flex: 1; /* Empuja el footer hacia abajo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 5%;
+}
+
+.contact-wrapper {
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+}
+
+.contact-wrapper h1 {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    text-align: center;
+    color: #7f8c8d;
+    margin-bottom: 2.5rem;
+}
+
+/* ================= Formulario (Grid) ================= */
+.contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 600px) {
+    .contact-form {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================= Entradas y Validaciones (:valid y :invalid) ================= */
+.form-group { display: flex; flex-direction: column; }
+.form-group label { margin-bottom: 0.5rem; font-weight: 600; color: var(--text-color); }
+
+.form-group input, .form-group textarea {
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background: var(--bg-color); color: var(--text-color);
+}
+
+/* Validación visual en tiempo real: rojo si es inválido, verde si es válido */
+.form-group input:not(:placeholder-shown):invalid,
+.form-group textarea:not(:placeholder-shown):invalid { border-color: #e74c3c; }
+
+.form-group input:not(:placeholder-shown):valid,
+.form-group textarea:not(:placeholder-shown):valid { border-color: var(--primary-color); }
+
+/* ================= Botón de Envío Interactivo ================= */
+.hidden-trigger { display: none; }
+
+.submit-btn {
+    grid-column: 1 / -1;
+    background-color: #bdc3c7; /* Desactivado por defecto */
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: not-allowed;
+    transition: background 0.3s, transform 0.2s;
+    pointer-events: none; /* Inhabilitar clics */
+}
+
+/* ¡Magia CSS! Si TODO el formulario es válido, el botón se vuelve clicable */
+.contact-form:valid .submit-btn {
+    background-color: var(--primary-color);
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.contact-form:valid .submit-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+.contact-form:valid .submit-btn:active { transform: scale(0.95); }
+
+/* ================= Animaciones CSS (Spinner y Modal) ================= */
+.spinner-overlay, .modal-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--card-bg); opacity: 0.95;
+    display: flex; justify-content: center; align-items: center; border-radius: 12px;
+    visibility: hidden; z-index: 10;
+}
+
+/* Al "enviar" (checkear el input oculto) se activa el spinner por 2 segundos */
+#submit-hack:checked ~ .spinner-overlay { animation: showSpinner 2.5s forwards; }
+#submit-hack:checked ~ .modal-overlay { animation: showModal 0.5s 2.5s forwards; }
+
+@keyframes showSpinner { 0%, 100% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }
+@keyframes showModal { to { opacity: 1; visibility: visible; } }
+
+.spinner { border: 6px solid var(--border-color); border-top: 6px solid var(--primary-color); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Estilo del contenido del modal */
+.modal-content { text-align: center; transform: translateY(-20px); transition: 0.3s; }
+#submit-hack:checked ~ .modal-overlay .modal-content { transform: translateY(0); }
+.success-icon { font-size: 4rem; color: var(--primary-color); margin-bottom: 10px; }
+.close-modal { display: inline-block; margin-top: 1.5rem; padding: 0.8rem 2rem; background: var(--text-color); color: var(--bg-color); text-decoration: none; border-radius: 6px; transition: background 0.3s, transform 0.2s; }
+.close-modal:hover { opacity: 0.8; transform: translateY(-2px); }
+.close-modal:active { transform: scale(0.95); }
+
+/* ================= Footer ================= */
+.contact-footer { background-color: var(--footer-bg); color: var(--footer-text); text-align: center; padding: 2rem; }
